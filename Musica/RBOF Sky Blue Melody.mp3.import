@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cq2cb10d6h8si"
+path="res://.godot/imported/RBOF Sky Blue Melody.mp3-c4328381b8a3dcbb4a44344c682a5f04.mp3str"
+
+[deps]
+
+source_file="res://Musica/RBOF Sky Blue Melody.mp3"
+dest_files=["res://.godot/imported/RBOF Sky Blue Melody.mp3-c4328381b8a3dcbb4a44344c682a5f04.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

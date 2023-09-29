@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://bwr0d52hnh3n4"]
+
+[ext_resource type="Script" path="res://Scenes/Player.gd" id="1_5woe7"]
+[ext_resource type="Texture2D" uid="uid://u3h825xwnmgq" path="res://Rocky Roads/Enemies/slime_blue.png" id="1_cqas4"]
+
+[sub_resource type="Animation" id="Animation_rx7bk"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 4]
+}
+
+[sub_resource type="Animation" id="Animation_0chuc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_xpier"]
+resource_name = "Walk"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sllua"]
+_data = {
+"Idle": SubResource("Animation_rx7bk"),
+"RESET": SubResource("Animation_0chuc"),
+"Walk": SubResource("Animation_xpier")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o80cq"]
+size = Vector2(16, 11)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_5woe7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cqas4")
+hframes = 5
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 3.0
+libraries = {
+"": SubResource("AnimationLibrary_sllua")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_o80cq")
